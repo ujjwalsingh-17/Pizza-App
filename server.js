@@ -75,7 +75,10 @@ app.set('view engine','ejs')
 
 
 require('./routes/web.js')(app)
-
+// to display 404 error page if route is not defined
+app.use((req,res)=>{
+    res.status(404).send('<h1>404, Page not found</h1>')
+})
 
 
 

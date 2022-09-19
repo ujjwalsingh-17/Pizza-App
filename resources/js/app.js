@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Noty from 'noty'
+import admin from '../../app/http/middlewares/admin'
 import {initAdmin} from './admin'
 
 let addToCart= document.querySelectorAll('.add-to-cart')
@@ -47,4 +48,10 @@ if(alertMsg){
     },2000)
 }
 
-initAdmin()
+
+
+// to check if we are in admin panel then only initAdmin() will be called
+let adminAreaPath=window.location.pathname
+if(adminAreaPath.includes('admin')){
+    initAdmin()
+}
